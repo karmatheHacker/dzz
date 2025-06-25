@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dzone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #181c24 0%, #232526 100%);
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      /* Subtle animated background */
+      background-size: 400% 400%;
+      animation: gradientBG 18s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      padding: 28px 40px 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(24, 28, 36, 0.98);
+      box-shadow: 0 4px 24px 0 #00e0ff22;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1.5px solid #00e0ff33;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #00e0ff;
+      text-shadow: 0 4px 24px #00e0ff44, 0 1px 0 #fff2;
+      transition: color 0.2s;
+      cursor: pointer;
+      user-select: none;
+    }
+    header h1:hover {
+      color: #fff;
+      text-shadow: 0 4px 24px #00e0ff99, 0 1px 0 #fff5;
+    }
+
+    #search {
+      padding: 12px 22px;
+      width: 340px;
+      border-radius: 28px;
+      border: none;
+      background: #23272f;
+      color: #fff;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 12px #00e0ff22;
+      transition: box-shadow 0.2s, background 0.2s;
+      border: 1.5px solid #00e0ff33;
+    }
+    #search:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #00e0ff77;
+      background: #23272fdd;
+    }
+
+    .welcome-message {
+      text-align: center;
+      margin: 32px 0 0 0;
+      font-size: 1.35rem;
+      color: #00e0ff;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: rgba(24, 28, 36, 0.7);
+      border-radius: 12px;
+      padding: 18px 0 12px 0;
+      box-shadow: 0 2px 12px #00e0ff11;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 36px;
+      padding: 48px 36px 36px 36px;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    .anime-card {
+      background: linear-gradient(135deg, #232526 0%, #23272f 100%);
+      border-radius: 22px;
+      padding: 0 0 22px 0;
+      box-shadow: 0 8px 32px #00e0ff22, 0 2px 8px #0008;
+      text-align: center;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid #00e0ff22;
+    }
+
+    .anime-card:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 16px 48px #00e0ff55, 0 2px 8px #000a;
+      border: 1.5px solid #00e0ff99;
+    }
+
+    .anime-card img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      border-radius: 22px 22px 0 0;
+      box-shadow: 0 2px 18px #00e0ff22;
+      background: #232526;
+      transition: filter 0.2s;
+    }
+    .anime-card:hover img {
+      filter: brightness(1.08) saturate(1.15);
+    }
+
+    .anime-card h2 {
+      font-size: 1.18rem;
+      margin: 18px 0 12px 0;
+      color: #00e0ff;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      min-height: 2.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 2px 8px #00e0ff22;
+    }
+
+    .anime-card a {
+      margin-top: auto;
+      display: inline-block;
+      padding: 12px 32px;
+      background: linear-gradient(90deg, #00e0ff 0%, #7f7fd5 100%);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 12px #00e0ff33;
+      transition: background 0.18s, transform 0.18s;
+      border: none;
+      letter-spacing: 1px;
+    }
+
+    .anime-card a:hover {
+      background: linear-gradient(90deg, #7f7fd5 0%, #00e0ff 100%);
+      transform: scale(1.09);
+      color: #fff;
+      box-shadow: 0 4px 18px #00e0ff55;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+      background: #232526;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00e0ff55;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 1100px) {
+      .anime-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        padding: 24px 8px 8px 8px;
+      }
+      header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 8px;
+      }
+      #search {
+        width: 95%;
+      }
+      .anime-card img {
+        height: 200px;
+      }
+    }
+    @media (max-width: 700px) {
+      .anime-card img {
+        height: 140px;
+      }
+      .anime-card h2 {
+        font-size: 1rem;
+      }
+      .anime-card a {
+        font-size: 0.95rem;
+        padding: 8px 18px;
+      }
+      .welcome-message {
+        font-size: 1rem;
+        padding: 12px 0 8px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dzone</h1>
+    <input type="text" id="search" placeholder="Search anime...">
+  </header>
+
+  <div class="welcome-message">
+    Welcome to Dzone! Enjoy seamless browsing and fast downloads of your favorite anime.
+  </div>
+
+  <main class="anime-grid" id="animeList">
+    <!-- Cards dynamically inserted by JS -->
+  </main>
+
+  <script>
+    const animeData = [
+      { title: "Vinland Saga", image: "images/vinlandsaga.jpg", link: "https://mega.nz/folder/msB3WIoY#aRp80JpYCl3slqrtB3aBSQ" },
+      { title: "Chainsaw Man", image: "images/chainsawman.jpg", link: "https://mega.nz/folder/utBRCIAA#-taQDHVSlOrgnvbp8j9GhQ" },
+      { title: "Lookism", image: "images/lookism.jpg", link: "https://mega.nz/folder/zl4mEZyL#HQAGt7xZZaIjyQxX2K9Bxw" },
+      { title: "Solo Leveling", image: "images/sololeveling.jpg", link: "https://mega.nz/folder/5TZHSQhT#fw2NDiZFG1keNLs2-3lf5Q" },
+      { title: "Death Note", image: "images/deathnote.jpg", link: "https://mega.nz/folder/ugIwwYwZ#hJ0L7D3y0Qard6ijl6SXpg" },
+      { title: "Jujutsu Kaisen", image: "images/jujutsukaisen.jpg", link: "https://mega.nz/folder/qtRx0JgK#RfRfxvUf10_QscaXQBrYxw" },
+      { title: "Devil May Cry", image: "images/devilmaycry.jpg", link: "https://mega.nz/folder/IfBlkCbA#0YshAhC5d4TklxMaH8_HXw" },
+      { title: "Shiguru", image: "images/shiguru.jpg", link: "https://mega.nz/folder/JXBkyIaY#BPt9rfzDSuXeYy3V3RAUYg" },
+      { title: "Bleach", image: "images/bleach.jpg", link: "watch.html?anime=bleach" },
+      { title: "Attack on Titan", image: "images/aot.jpg", link: "watch.html?anime=aot" },
+      { title: "Fullmetal Alchemist: Brotherhood", image: "images/fmab.png", link: "watch.html?anime=fmab" },
+      { title: "My Hero Academia", image: "images/myheroacademia.jpg", link: "watch.html?anime=myheroacademia" },
+      { title: "Demon Slayer", image: "images/demonslayer.jpg", link: "watch.html?anime=demonslayer" },
+      { title: "Hunter x Hunter", image: "images/hxh.jpg", link: "watch.html?anime=hxh" },
+      { title: "Tokyo Ghoul", image: "images/tokyoghoul.jpg", link: "watch.html?anime=tokyoghoul" },
+      { title: "Sword Art Online", image: "images/sao.jpg", link: "watch.html?anime=sao" },
+      { title: "Black Clover", image: "images/blackclover.jpg", link: "watch.html?anime=blackclover" },
+      { title: "Mob Psycho 100", image: "images/mobpsycho.jpg", link: "watch.html?anime=mobpsycho" },
+      { title: "One Punch Man", image: "images/opm.jpg", link: "watch.html?anime=opm" },
+      { title: "Haikyuu!!", image: "images/haikyuu.jpg", link: "watch.html?anime=haikyuu" },
+      { title: "Kuroko's Basketball", image: "images/kuroko.jpg", link: "watch.html?anime=kuroko" },
+      { title: "Blue Exorcist", image: "images/blueexorcist.jpg", link: "watch.html?anime=blueexorcist" },
+      // { title: "Fairy Tail", image: "images/fairytail.jpg", link: "#" }, // Removed as requested
+      { title: "Re:Zero", image: "images/rezero.jpg", link: "watch.html?anime=rezero" },
+      { title: "Steins;Gate", image: "images/steinsgate.jpg", link: "watch.html?anime=steinsgate" },
+      { title: "Code Geass", image: "images/codegeass.jpg", link: "watch.html?anime=codegeass" },
+      { title: "Gintama", image: "images/gintama.jpg", link: "watch.html?anime=gintama" },
+      { title: "Dr. Stone", image: "images/drstone.jpg", link: "watch.html?anime=drstone" },
+      { title: "Horimiya", image: "images/horimiya.jpg", link: "watch.html?anime=horimiya" },
+      { title: "Hajime no Ippo", image: "images/hajimenoippo.jpg", link: "watch.html?anime=hajimenoippo" },
+      { title: "Tomorrow's Joe", image: "images/tomorrowsjoe.jpg", link: "watch.html?anime=tomorrowsjoe" },
+      { title: "Mashle", image: "images/mashle.jpg", link: "watch.html?anime=mashle" }
+    ];
+
+    const animeList = document.getElementById('animeList');
+    animeData.forEach(anime => {
+      const card = document.createElement('div');
+      card.className = 'anime-card';
+      card.innerHTML = `
+        <img src="${anime.image}" alt="${anime.title}">
+        <h2>${anime.title}</h2>
+        <a href="${anime.link}" target="_blank">⬇ Download</a>
+      `;
+      animeList.appendChild(card);
+    });
+
+    document.getElementById('search').addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll('.anime-card').forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
+      // { title: "Death Parade", image: "images/deathparade.jpg", link: "#" },
+      // { title: "Devilman Crybaby", image: "images/devilmancrybaby.jpg", link: "#" },
+      // { title: "The Tatami Galaxy", image: "images/tatamigalaxy.jpg", link: "#" },
+      // { title: "Ping Pong the Animation", image: "images/pingpong.jpg", link: "#" },
+      // { title: "Barakamon", image: "images/barakamon.jpg", link: "#" },
+      // { title: "Silver Spoon", image: "images/silverspoon.jpg", link: "#" },
+      // { title: "Usagi Drop", image: "images/usagidrop.jpg", link: "#" },
+      // { title: "Nana", image: "images/nana.jpg", link: "#" },
+      // { title: "Fruits Basket", image: "images/fruitsbasket.jpg", link: "#" },
+      // { title: "Nisekoi", image: "images/nisekoi.jpg", link: "#" },
+      // { title: "Bakuman", image: "images/bakuman.jpg", link: "#" },
+      // { title: "Golden Kamuy", image: "images/goldenkamuy.jpg", link: "#" },
+      // { title: "Kaguya-sama: Love is War", image: "images/kaguya.jpg", link: "#" },
+      // { title: "Chainsaw Man", image: "images/chainsawman.jpg", link: "#" },
+      // ...repeat until you have 200+ entries...
+      // Example placeholder entries:
+      { title: "Anime 101", image: "images/placeholder.jpg", link: "#" },
+      { title: "Anime 102", image: "images/placeholder.jpg", link: "#" },
+      // ...add more as needed...
+      { title: "Anime 200", image: "images/placeholder.jpg", link: "#" },
+      { title: "Anime 201", image: "images/placeholder.jpg", link: "#" }
+    ];
+
+    const animeList = document.getElementById('animeList');
+    animeData.forEach(anime => {
+      const card = document.createElement('div');
+      card.className = 'anime-card';
+      card.innerHTML = `
+        <img src="${anime.image}" alt="${anime.title}">
+        <h2>${anime.title}</h2>
+        <a href="${anime.link}" target="_blank">⬇ Download</a>
+      `;
+      animeList.appendChild(card);
+    });
+
+    document.getElementById('search').addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll('.anime-card').forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

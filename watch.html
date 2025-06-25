@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    const animeLinks = {
+      vinlandsaga: "https://mega.nz/folder/msB3WIoY#aRp80JpYCl3slqrtB3aBSQ",
+      chainsawman: "https://mega.nz/folder/utBRCIAA#-taQDHVSlOrgnvbp8j9GhQ",
+      lookism: "https://mega.nz/folder/zl4mEZyL#HQAGt7xZZaIjyQxX2K9Bxw",
+      sololeveling: "https://mega.nz/folder/5TZHSQhT#fw2NDiZFG1keNLs2-3lf5Q",
+      deathnote: "https://mega.nz/folder/ugIwwYwZ#hJ0L7D3y0Qard6ijl6SXpg",
+      jujutsukaisen: "https://mega.nz/folder/qtRx0JgK#RfRfxvUf10_QscaXQBrYxw",
+      devilmaycry: "https://mega.nz/folder/IfBlkCbA#0YshAhC5d4TklxMaH8_HXw",
+      shiguru: "https://mega.nz/folder/JXBkyIaY#BPt9rfzDSuXeYy3V3RAUYg",
+      opm: "https://t.me/Onepunchman_saitama",
+      bleach: "https://t.me/animehouse_bleach",
+      aot: "https://t.me/afmaot",
+      fmab: "https://t.me/Fullmetal_Alchemist_Sub",
+      myheroacademia: "https://t.me/My_Hero_Academia_Episode_Dub",
+      demonslayer: "https://t.me/bleach34",
+      hxh: "https://t.me/Hunter_x_Hunter_All_Season_Hindi",
+      tokyoghoul: "https://t.me/Tokyo_ghoul_english_dub_episodes",
+      sao: "https://t.me/sword_art_online_all_season",
+      blackclover: "https://t.me/black_cloverEnglish",
+      mobpsycho: "https://t.me/Mob_psycho_hindi_100_13",
+      haikyuu: "https://t.me/scatteredx7",
+      kuroko: "https://t.me/basketballanimehindi",
+      blueexorcist: "https://t.me/bluexorcistuwu",
+      rezero: "https://t.me/rezeroenglishdubbedallseason",
+      steinsgate: "https://t.me/animeSteinsGate",
+      codegeass: "https://t.me/Code_Geass_Hindi_21",
+      gintama: "https://t.me/gintama_english_dual",
+      drstone: "https://t.me/dr_stone_anime_all_season_1_2_3",
+      horimiya: "https://t.me/Horimiya_Season_1_2_Hindi",
+      hajimenoippo: "https://t.me/Hajime_no_Ippo_all_seasons",
+      tomorrowsjoe: "https://t.me/AshitaNoJoeSeries",
+      mashle: "https://t.me/mashle_all"
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const anime = params.get("anime");
+
+    if (anime && animeLinks[anime]) {
+      window.location.href = animeLinks[anime];
+    } else {
+      document.write("<h2 style='color: white; text-align: center; margin-top: 20%;'>Anime not found.</h2>");
+    }
+  </script>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <p style="text-align:center;">Redirecting to MEGA folder...</p>
+</body>
+</html>
